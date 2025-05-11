@@ -10,6 +10,7 @@ import { readFileSync } from 'fs';
 import { join } from 'path';
 
 dotenv.config();
+process.env.HOST = '0.0.0.0';
 
 // Get detailed git info with fallbacks
 const getGitInfo = () => {
@@ -95,7 +96,7 @@ export default defineConfig((config) => {
       target: 'esnext',
     },
     server: {
-      host: true,
+      host:  process.env.HOST || true,
       allowedHosts: ['boltdiy.vertexstrategy.io'],
     },
     plugins: [
